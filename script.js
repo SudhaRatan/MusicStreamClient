@@ -1,7 +1,6 @@
 var socket = io("ws://localhost:3000");
 
 socket.on('playsong',song => {
-  console.log(song)
   play(song)
 })
 
@@ -10,9 +9,9 @@ document.getElementById("button").addEventListener('click',() => {
   socket.emit('playsong',song);
 })
 
-const play = (song) => {
+const play = async (song) => {
   const audioPlayer = document.getElementById('audioPlayer');
-  audioPlayer.src = `http://localhost:3000/music/${song}`;
+  audioPlayer.src = song;
   audioPlayer.load();
   audioPlayer.play();
 }
